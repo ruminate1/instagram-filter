@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.vite/
+*.xpi
+web-ext-artifacts/
+.web-ext-api-key
+.web-ext-config.js
+coverage/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local development scaffolding — not part of the shipped extension and kept
+# out of the public repo (these carry personal/working context).
+/CLAUDE.md
+/CLAUDE_MEMORY.md
+/HANDOFF.md
+/agent-os/

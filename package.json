@@ -1,0 +1,30 @@
+{
+  "name": "instagram-filter",
+  "version": "0.1.0",
+  "description": "Aggressively de-junks instagram.com.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --mode development --watch",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "web-ext lint --source-dir=dist",
+    "start:firefox": "web-ext run --source-dir=dist --target=firefox-desktop"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^143.0.0",
+    "@types/webextension-polyfill": "^0.12.5",
+    "@vitest/coverage-v8": "^4.1.7",
+    "jsdom": "^29.1.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14",
+    "vite-plugin-web-extension": "^4.5.1",
+    "vitest": "^4.1.7",
+    "web-ext": "^10.2.0"
+  }
+}

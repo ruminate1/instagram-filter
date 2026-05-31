@@ -1,0 +1,17 @@
+{
+  "addons": {
+    "instagram-filter@cheris.local": {
+      "updates": [
+        {
+          "version": "0.1.0",
+          "update_link": "https://github.com/ruminate1/instagram-filter/releases/download/v0.1.0/instagram-filter-0.1.0.xpi",
+          "applications": {
+            "gecko": {
+              "strict_min_version": "142.0"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

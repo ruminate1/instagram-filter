@@ -1,0 +1,51 @@
+/*
+ * Instagram Filter — structural hides.
+ *
+ * Injected at document_start via manifest.content_scripts. CSS-only,
+ * applies immediately so there is no flash of unfiltered content.
+ *
+ * Mode is set on <html data-igf-mode="..."> by src/content/main.ts:
+ *   • absent (default) → filter is ON, junk is hidden
+ *   • "off"   → filter is disabled (popup toggle), junk is restored
+ *   • "debug" → junk is restored but outlined in red, for diagnosing
+ *               whether filtering would have caught something
+ *
+ * Selectors here mirror keys in src/selectors.ts:
+ *   nav.exploreLink   → a[href="/explore/"]
+ *   nav.reelsLink     → a[href="/reels/"]
+ *   [data-igf-hidden] → posts hidden by the JS filters (sponsored/suggested)
+ *
+ * When a selector changes in selectors.ts, update this file in the same
+ * commit.
+ *
+ * NOTE: the right-hand "Suggested for you" sidebar and the stories tray are
+ * NOT hidden here — Instagram exposes no stable container hook for them yet.
+ * See sidebar.* / stories.* in selectors.ts and the next-steps in HANDOFF.md.
+ */
+
+/* ---- default: filter is ON, hide structural junk ---- */
+
+a[href="/explore/"],
+a[href="/reels/"],
+[data-igf-hidden] {
+  display: none !important;
+}
+
+/* ---- "off" mode: restore everything ---- */
+
+html[data-igf-mode="off"] a[href="/explore/"],
+html[data-igf-mode="off"] a[href="/reels/"],
+html[data-igf-mode="off"] [data-igf-hidden] {
+  display: revert !important;
+  outline: revert !important;
+}
+
+/* ---- "debug" mode: restore + outline what would have been hidden ---- */
+
+html[data-igf-mode="debug"] a[href="/explore/"],
+html[data-igf-mode="debug"] a[href="/reels/"],
+html[data-igf-mode="debug"] [data-igf-hidden] {
+  display: revert !important;
+  outline: 2px solid red !important;
+  outline-offset: -2px;
+}
